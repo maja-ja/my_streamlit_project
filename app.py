@@ -113,8 +113,16 @@ def render_auth():
             try:
                 res = supabase.auth.sign_up({"email": email, "password": password})
                 st.success("✅ 註冊成功！請直接點擊 LOGIN 登入。")
+            except Exception as e:
+                # 🛑 把原本的固定文字，改成顯示真實的錯誤訊息 (e)
+                st.error(f"❌ 註冊失敗原因：{str(e)}")
+    '''with col2:
+        if st.button("SIGN UP"):
+            try:
+                res = supabase.auth.sign_up({"email": email, "password": password})
+                st.success("✅ 註冊成功！請直接點擊 LOGIN 登入。")
             except Exception:
-                st.error("❌ 註冊失敗：密碼需至少 6 位數或帳號已存在。")
+                st.error("❌ 註冊失敗：密碼需至少 6 位數或帳號已存在。")'''
 
 # ==========================================
 # 5. 核心畫面邏輯
